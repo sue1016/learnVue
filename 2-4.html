@@ -1,0 +1,38 @@
+<!DOCTYPE  html>
+<html lang ="en">   
+<head>
+	<meta charset="UTF-8">  
+	<title>属性绑定和双向数据绑定</title>
+	<script src="./vue.js"></script> 
+
+</head>
+<body>
+    <div id="root">
+        <!-- title是个html的属性，当鼠标放在该标签上，title内的内容就会显示出来 -->
+        <div title="this is a title">hello</div>
+        <!-- 用v-bind:指令将标签的属性与vue实例的数据项进行绑定 -->
+        <!-- 使用模版指令之后后面的不再是字符串，而是一串js指令 -->
+        <!-- v-bind: 可缩写成 : -->
+        <div v-bind:title="'and ' + titleContent">world</div>
+      
+        
+        <!-- 双向绑定是指改变了页面的值也会改变其绑定的数据的值 -->
+        <!-- v-model实现数据的双向绑定  -->
+        <input :value="titleContent"/>
+        <input v-model="titleContent"/>
+        <div>{{titleContent}}</div>
+    </div>  
+
+    
+	<script>
+          //单向绑定是指数据可以改变页面的内容，但是页面不能改变数据的内容 
+          //
+          new Vue({
+			  el: "#root",
+              data: {
+                  titleContent:"this is a title too"
+              }
+		  })
+    </script>
+</body>
+</html>	
