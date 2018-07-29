@@ -1,0 +1,20 @@
+<!DOCTYPE  html>
+<html lang ="en">   
+<head>
+	<meta charset="UTF-8">  
+	<title>Vue入门</title>
+	<script src="./vue.js"></script> 
+
+</head>
+<body>
+	<div id="root">Hello vue</div>
+    
+	<script>
+          new Vue({
+			  el:  "#root",  //我这个vue实例和哪个做绑定,决定挂载点 # -- id
+              data: {
+			       msg:"hello again"
+			  }//vue实例的数据
+		  })
+</body>
+</html>	
