@@ -7,16 +7,38 @@
 
 </head>
 <body>
+    <!-- -->
     <div id="root">
         <input v-model="inputValue" />
         <button @click="handleSubmit">提交</button>
         <ul>
-            <li v-for="(item,index) of list"  :key="index">{{item}}</li>
+            <!-- 通过父组件的属性向子组件属性传参-->
+            <todo-item v-for="(item,index) of list" :key="index" :content="item"></todo-item>
         </ul>
     </div> 
 	<script>
+
+//通过Vue.component定义的组件，叫做全局组件
+//Vue.component('todo-item',{
+    //组建可以有自己的模版  
+ //   template: '<li>item</li>'
+//
+//})
+
+//局部组件
+
+//
+var TodoItem  =  {
+    //props  可接收数组 
+    props: ['content'],   //我这个小组件接收从外部传进来的一个名字叫做content的属性，
+    template:'<li>{{content}}</li>'
+
+}
           new Vue({
 			  el: "#root",
+              components: {
+                  'todo-item':TodoItem
+              },              //局部组件需要在vue实例中注册 
               data: {
                   inputValue: '',
                   list: []
