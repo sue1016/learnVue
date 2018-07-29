@@ -1,0 +1,40 @@
+<!DOCTYPE  html>
+<html lang ="en">   
+<head>
+	<meta charset="UTF-8">  
+	<title>Vue入门</title>
+	<script src="./vue.js"></script> 
+
+</head>
+<body>
+    <div id="root">
+    <!-- 两个花括号里的是插值表达式   -->
+    <!--  v- 后面接的是Vue指令  -->
+    <!-- v-text 告诉h1标签，你要显示的内容就是number这个变量,而且是被转义之后的结果  -->   
+    <!-- v-html 类似，不过没有被转义  -->
+    <!-- v-on:click 对应的标签被点击的时候，会执行里面的函数 -->
+        <h1 v-on:click="handleClick">{{msg}}</h1>
+        <div v-text="content"></div>
+        <div v-html="content"></div> 
+    </div>  
+
+    
+	<script>
+          new Vue({
+			  el: "#root", 
+              data: {
+			       msg: "hello",
+                   number: 123,
+                   content: '<h1>content</h1>'
+			  },
+              //与事件绑定的响应函数都在Vue实例的methods 属性里
+              methods:{
+                  handleClick: function(){
+                      this.msg = "world"
+                      //this指代的是该Vue实例 
+                  }
+            } 
+		  })
+    </script>
+</body>
+</html>	
