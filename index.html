@@ -7,11 +7,18 @@
 
 </head>
 <body>
-    <div id="root">{{msg}}</div>
+    <!-- 挂载点、模版、实例之间的关系 -->
+    <!-- div标签就是下述Vue实例的挂载点 -->  
+    <!-- Vue只会处理对应挂载点下的内容 -->
+    <!-- 在挂载点内部的内容，即是模版内容 -->
+    <!-- 模版内容不一定要写在挂载点内，也可以写在Vue的template属性里-->
+    <div id="root">{{msg}}</div>  
+
     
 	<script>
           new Vue({
 			  el: "#root",  //我这个vue实例和哪个做绑定,决定挂载点 # -- id
+              template: '<h1>hello {{msg}} </h1>',
               data: {
 			       msg: "hello again"
 			  }//vue实例的数据
