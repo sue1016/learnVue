@@ -1,0 +1,40 @@
+<!DOCTYPE  html>
+<html lang ="en">   
+<head>
+	<meta charset="UTF-8">  
+    <title>v-if, v-show.v-for 指令</title>
+	<script src="./vue.js"></script> 
+
+</head>
+<body>
+    <div id="root">
+        <!-- v-if 为false的时候，直接移除该标签 --> 
+        <!-- v-show 为false的时候，只是隐藏标签，display=none -->
+        <!-- 要是隐藏显示频率高，v-show性能更高 -->
+        <div v-if="show">hello world</div>
+        <button @click="handleClick">toggle</button>
+
+
+        <ul>
+            <!-- key要求每一次循环都不相同，可以加速每一次渲染的性能  -->
+            <li  v-for="(item,index) of list" :key="index">{{item}}</li>
+
+        </ul>
+    </div> 
+	<script>
+          new Vue({
+			  el: "#root",
+              data: {
+                  show:  true,
+                  list: [1,2,3]
+              },
+              methods:{
+                  handleClick: function(){
+                      this.show  =  !this.show
+                  }
+              }
+		  
+          })
+    </script>
+</body>
+</html>	
