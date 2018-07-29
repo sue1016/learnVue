@@ -28,6 +28,8 @@
 //局部组件
 
 //
+
+//每一个Vue的组件又是一个Vue的实例,也可写methods等等..... 
 var TodoItem  =  {
     //props  可接收数组 
     props: ['content'],   //我这个小组件接收从外部传进来的一个名字叫做content的属性，
@@ -44,6 +46,7 @@ var TodoItem  =  {
                   list: []
                   
               },
+              //若Vue实例不定义template,则将挂载点下的所有内容作为template
               methods: {
                   handleSubmit: function(){
                   this.list.push(this.inputValue)
