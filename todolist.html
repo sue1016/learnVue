@@ -12,8 +12,16 @@
         <input v-model="inputValue" />
         <button @click="handleSubmit">提交</button>
         <ul>
-            <!-- 通过父组件的属性向子组件属性传参-->
-            <todo-item v-for="(item,index) of list" :key="index" :content="item"></todo-item>
+            <!-- 父组件向子组件的传值是通过属性实现的-->
+            <!-- 子组件向父组件的传值是通过  子组件发布事件，父组件监听并执行相应函数来实现的-->
+            <todo-item v-for="(item,index) of list" 
+                :key="index" 
+                :content="item"
+                :index="index"
+                @delete="handleDelete"
+                ></todo-item>
+            <!-- @==v-on 监听-->
+            <!-- 使父监听delete事件，若监听到了该事件，则触发handleDelete函数 -->
         </ul>
     </div> 
 	<script>
@@ -32,8 +40,14 @@
 //每一个Vue的组件又是一个Vue的实例,也可写methods等等..... 
 var TodoItem  =  {
     //props  可接收数组 
-    props: ['content'],   //我这个小组件接收从外部传进来的一个名字叫做content的属性，
-    template:'<li>{{content}}</li>'
+    props: ['content','index'],   //我这个小组件接收从外部传进来的一个名字叫做content的属性，
+    template:'<li @click="handleClick">{{content}}</li>',
+    methods:{
+        handleClick: function(){
+            //子组件向父组件发布delete事件，并且传递index参数
+            this.$emit('delete',this.index)
+        }
+    }
 
 }
           new Vue({
@@ -51,8 +65,10 @@ var TodoItem  =  {
                   handleSubmit: function(){
                   this.list.push(this.inputValue)
                   this.inputValue=''
-
-              }
+              },
+                  handleDelete: function(index){
+                   this.list.splice(index,1)
+                  }
               } 
           })
     </script>
