@@ -7,14 +7,15 @@
 
 </head>
 <body>
-	<div id="root">Hello vue</div>
+    <div id="root">{{msg}}</div>
     
 	<script>
           new Vue({
-			  el:  "#root",  //我这个vue实例和哪个做绑定,决定挂载点 # -- id
+			  el: "#root",  //我这个vue实例和哪个做绑定,决定挂载点 # -- id
               data: {
-			       msg:"hello again"
+			       msg: "hello again"
 			  }//vue实例的数据
 		  })
+    </script>
 </body>
 </html>	
