@@ -13,7 +13,7 @@
         <button @click="handleSubmit">提交</button>
         <ul>
             <!-- 父组件向子组件的传值是通过属性实现的-->
-            <!-- 子组件向父组件的传值是通过  子组件发布事件，父组件监听并执行相应函数来实现的-->
+            <!-- 子组件向父组件的传值是通过  子组件发布事件，父组件订阅 监听并执行相应函数来实现的-->
             <todo-item v-for="(item,index) of list" 
                 :key="index" 
                 :content="item"
